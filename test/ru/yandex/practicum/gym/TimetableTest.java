@@ -1,6 +1,5 @@
 package ru.yandex.practicum.gym;
 
-import com.sun.source.tree.Tree;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -87,7 +86,7 @@ public class TimetableTest {
         Timetable timetable = new Timetable();
 
         Coach coach1 = new Coach("Васильев", "Николай", "Сергеевич");
-        Coach coach2 = new Coach("Qwerty" ,"Asdfg", "Zxcvb");
+        Coach coach2 = new Coach("Qwerty", "Asdfg", "Zxcvb");
         Coach coach3 = new Coach("12345", "67890", "Qqqqqq");
 
         Group groupAdult = new Group("Акробатика для взрослых", Age.ADULT, 90);

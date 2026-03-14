@@ -1,6 +1,5 @@
 package ru.yandex.practicum.gym;
 
-import java.sql.Time;
 import java.util.*;
 
 public class Timetable {
@@ -57,8 +56,7 @@ public class Timetable {
         for (DayOfWeek dayOfWeek : timetable.keySet()) {
             for (TimeOfDay timeOfDay : timetable.get(dayOfWeek).keySet()) {
                 for (TrainingSession trainingSession : timetable.get(dayOfWeek).get(timeOfDay)) {
-                    unsortedMap.put(trainingSession.getCoach(),
-                            unsortedMap.getOrDefault(trainingSession.getCoach(), 0) + 1);
+                    unsortedMap.put(trainingSession.getCoach(), unsortedMap.getOrDefault(trainingSession.getCoach(), 0) + 1);
                 }
             }
         }
