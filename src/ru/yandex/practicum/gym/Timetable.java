@@ -51,4 +51,32 @@ public class Timetable {
         System.out.println("В этот день в это время тренировок не запланировано");
         return null;
     }
+
+    public TreeMap<Integer, ArrayList<Coach>> getCountByCoaches() {
+        HashMap<Coach, Integer> unsortedMap = new HashMap<>();
+        for (DayOfWeek dayOfWeek : timetable.keySet()) {
+            for (TimeOfDay timeOfDay : timetable.get(dayOfWeek).keySet()) {
+                for (TrainingSession trainingSession : timetable.get(dayOfWeek).get(timeOfDay)) {
+                    unsortedMap.put(trainingSession.getCoach(),
+                            unsortedMap.getOrDefault(trainingSession.getCoach(), 0) + 1);
+                }
+            }
+        }
+
+        TreeMap<Integer, ArrayList<Coach>> sortedMap = new TreeMap<>(Comparator.reverseOrder());
+        for (Coach coach : unsortedMap.keySet()) {
+            if (sortedMap.containsKey(unsortedMap.get(coach))) {
+                sortedMap.get(unsortedMap.get(coach)).add(coach);
+            } else {
+                ArrayList<Coach> coaches = new ArrayList<>();
+                coaches.add(coach);
+                sortedMap.put(unsortedMap.get(coach), coaches);
+            }
+        }
+        if (sortedMap.isEmpty()) {
+            return null;
+        }
+
+        return sortedMap;
+    }
 }
